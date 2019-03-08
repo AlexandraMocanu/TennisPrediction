@@ -153,10 +153,10 @@ def read_datasets_wta():
     
     # modifiy: winner => player2; loser => player1
 
-    # input = tourney_name, tourney_id, player2_id, player1_id, surface, draw_size, player2_seed, player2_name, player2_hand, player2_ht, player2_ioc,
+    # input = tourney_name, tourney_id, player2_id, player1_id, surface, draw_size, best_of, player2_seed, player2_name, player2_hand, player2_ht, player2_ioc,
         #           player2_age, player2_rank, player1_seed, player1_name, player1_hand, player1_ht, player1_ioc, player1_age, player1_rank,
         # dont care = tourney_level, tourney_date, match_num, player2_entry, player2_rank_points,
-        #               player1_entry, player1_rank_points, best_of, round
+        #               player1_entry, player1_rank_points, round
         # output = score, minutes, player2_ace, player2_df, player2_svpt, player2_1stIn, player2_1stWon, 
         #           player2_2ndWon, player2_SvGms, player2_bpSaved, player2_bpFaced, player1_ace, player1_df, player1_svpt, 
         #           player1_1stIn, player1_1stWon, player1_2ndWon, player1_SvGms, player1_bpSaved, player1_bpFaced
