@@ -3,51 +3,53 @@ import pandas as pd
 import csv
 import numpy as np
 
-# ATP_path = "D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\atp-matches-dataset"
-ATP_path = "D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\tennis_atp\\matches"
-WTA_path = "D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\tennis_wta"
+ATP_path = "D:\\EXPERT\\lab_se\\tennis_atp\\matches"
+WTA_path = "D:\\EXPERT\\lab_se\\tennis_wta"
 
 RENAME = 1
 
 def read_datasets_atp():
 
-    # original:
-    # winner_seed   winner_name	    winner_rank	    score
-    # winner_hand	winner_ht	    winner_ioc	    winner_rank_points	
-    # loser_seed	loser_name	    loser_hand	    loser_rank	    
-    # loser_ht	    loser_ioc	    loser_rank_points	
-    # best_of	    minutes	        w_ace	        w_df	        w_svpt	        l_SvGms	
-    # w_1stIn	    w_1stWon	    w_2ndWon	    w_SvGms	        w_bpSaved	    w_bpFaced	
-    # l_ace	        l_df	        l_svpt	        l_1stIn	        l_1stWon	    l_2ndWon	        
-    # l_bpSaved	    l_bpFaced
-    # tourney_id, tourney_date, match_num, winner_id, winner_entry, loser_id, loser_entry, round
-    # tourney_name, draw_size, surface, tourney_level, player_1, player_2, winner_age, loser_age
+    ##
+        # original:
+        # winner_seed   winner_name	    winner_rank	    score
+        # winner_hand	winner_ht	    winner_ioc	    winner_rank_points	
+        # loser_seed	loser_name	    loser_hand	    loser_rank	    
+        # loser_ht	    loser_ioc	    loser_rank_points	
+        # best_of	    minutes	        w_ace	        w_df	        w_svpt	        l_SvGms	
+        # w_1stIn	    w_1stWon	    w_2ndWon	    w_SvGms	        w_bpSaved	    w_bpFaced	
+        # l_ace	        l_df	        l_svpt	        l_1stIn	        l_1stWon	    l_2ndWon	        
+        # l_bpSaved	    l_bpFaced
+        # tourney_id, tourney_date, match_num, winner_id, winner_entry, loser_id, loser_entry, round
+        # tourney_name, draw_size, surface, tourney_level, player_1, player_2, winner_age, loser_age
+        #
+        #!Remember: winner => player2 ; loser => player1
+        #
+        # final: 
+        # tourney_id, tourney_name, surface, draw_size, tourney_level, tourney_date, match_num,
+        # player2_id, player2_seed, player2_entry, player2_name, player2_hand, player2_ht, player2_ioc, 
+        # player2_age, player2_rank, player2_rank_points, player1_id, player1_seed, player1_entry, 
+        # player1_name, player1_hand, player1_ht, player1_ioc, player1_age, player1_rank, player1_rank_points, 
+        # score, best_of, round, minutes, player2_ace, player2_df, player2_svpt, player2_1stIn, player2_1stWon, 
+        # player2_2ndWon, player2_SvGms, player2_bpSaved, player2_bpFaced, player1_ace, player1_df, player1_svpt, 
+        # player1_1stIn, player1_1stWon, player1_2ndWon, player1_SvGms, player1_bpSaved, player1_bpFaced
+        #
+        # input = tourney_name, tourney_id, player2_id, player1_id, surface, draw_size, player2_seed, player2_name, player2_hand, player2_ht, player2_ioc,
+        #           player2_age, player2_rank, player1_seed, player1_name, player1_hand, player1_ht, player1_ioc, player1_age, player1_rank, best_of
+        #  
+        # dont care = tourney_level, tourney_date, match_num, player2_entry, player2_rank_points,
+        #               player1_entry, player1_rank_points, round
+        #           tourney_name, player1_name, player2_name, player2_ioc, player1_ioc
+        # output = score, minutes, player2_ace, player2_df, player2_svpt, player2_1stIn, player2_1stWon, 
+        #           player2_2ndWon, player2_SvGms, player2_bpSaved, player2_bpFaced, player1_ace, player1_df, player1_svpt, 
+        #           player1_1stIn, player1_1stWon, player1_2ndWon, player1_SvGms, player1_bpSaved, player1_bpFaced
+        #
+        # score -> set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l, t1, t2, t3, t4, t5
+        #
+        # winner = player2_id
 
-    #!Remember: winner => player2 ; loser => player1
-
-    # final: 
-    # tourney_id, tourney_name, surface, draw_size, tourney_level, tourney_date, match_num,
-    # player2_id, player2_seed, player2_entry, player2_name, player2_hand, player2_ht, player2_ioc, 
-    # player2_age, player2_rank, player2_rank_points, player1_id, player1_seed, player1_entry, 
-    # player1_name, player1_hand, player1_ht, player1_ioc, player1_age, player1_rank, player1_rank_points, 
-    # score, best_of, round, minutes, player2_ace, player2_df, player2_svpt, player2_1stIn, player2_1stWon, 
-    # player2_2ndWon, player2_SvGms, player2_bpSaved, player2_bpFaced, player1_ace, player1_df, player1_svpt, 
-    # player1_1stIn, player1_1stWon, player1_2ndWon, player1_SvGms, player1_bpSaved, player1_bpFaced
-
-    # input = tourney_name, tourney_id, player2_id, player1_id, surface, draw_size, player2_seed, player2_name, player2_hand, player2_ht, player2_ioc,
-    #           player2_age, player2_rank, player1_seed, player1_name, player1_hand, player1_ht, player1_ioc, player1_age, player1_rank, best_of
-    
-    # dont care = tourney_level, tourney_date, match_num, player2_entry, player2_rank_points,
-    #               player1_entry, player1_rank_points, round
-    #           tourney_name, player1_name, player2_name, player2_ioc, player1_ioc
-    # output = score, minutes, player2_ace, player2_df, player2_svpt, player2_1stIn, player2_1stWon, 
-    #           player2_2ndWon, player2_SvGms, player2_bpSaved, player2_bpFaced, player1_ace, player1_df, player1_svpt, 
-    #           player1_1stIn, player1_1stWon, player1_2ndWon, player1_SvGms, player1_bpSaved, player1_bpFaced
-
-    # score -> set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l, t1, t2, t3, t4, t5
-
-    with open('D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_atp_modified_features.csv', 'w') as features,\
-            open('D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_atp_modified_labels.csv', 'w') as labels:
+    with open('D:\\EXPERT\\lab_se\\TennisPrediction\\combined_atp_modified_features.csv', 'w') as features,\
+            open('D:\\EXPERT\\lab_se\\TennisPrediction\\combined_atp_modified_labels.csv', 'w') as labels:
         filewriter_features = csv.writer(features, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
         filewriter_labels = csv.writer(labels, delimiter=',',
@@ -57,68 +59,124 @@ def read_datasets_atp():
                                     'surface', 'draw_size', 'best_of', 'player2_seed', 'player2_hand', 'player2_ht',
                                     'player2_age', 'player2_rank', 'player1_seed', 'player1_hand', 'player1_ht', 
                                     'player1_age', 'player1_rank'])
-        filewriter_labels.writerow(['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
-                                    't1', 't2', 't3', 't4', 't5',
+        filewriter_labels.writerow(['winner', 'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 
+                                    'set5_w', 'set5_l', 't1', 't2', 't3', 't4', 't5',
                                     'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                                     'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                                     'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
                                     'player1_bpFaced'])
 
+        unique_tourneys_atp = "D:\\EXPERT\\lab_se\\tennis_atp\\matches\\unique_tourneys_atp.csv"
+        map_tourneys_atp = "D:\\EXPERT\\lab_se\\TennisPrediction\\atp_tourney_map.csv"
+        unique_tourneys_atp_df = pd.read_csv(unique_tourneys_atp, encoding = "ISO-8859-1")
+        map_tourneys_atp_df = pd.read_csv(map_tourneys_atp, encoding = "ISO-8859-1")
+
+        k = 0
         for file in os.listdir(ATP_path):
             # if "atp_matches" in file and "2015" not in file and "2016" not in file and "2017" not in file:
             if "atp_matches" in file and "futures" not in file:
                 read_file = pd.read_csv(os.path.join(ATP_path, file), parse_dates=False, encoding = "ISO-8859-1")
                 print("Processing ... " + os.path.join(ATP_path, file))
                 if RENAME == 1:
-                    read_file.rename(index=str, columns={
-                        "winner_seed" : "player2_seed",
-                        "winner_name" : "player2_name",
-                        "winner_rank" : "player2_rank",
-                        "winner_hand" : "player2_hand",
-                        "winner_ht" : "player2_ht",
-                        "winner_ioc" : "player2_ioc",
-                        "winner_rank_points" : "player2_rank_points",
-                        "winner_id" : "player2_id",
-                        "winner_entry" : "player2_entry",
-                        "winner_age" : "player2_age",
-                        "w_ace" : "player2_ace",
-                        "w_df" : "player2_df",
-                        "w_svpt" : "player2_svpt",
-                        "w_bpFaced" : "player2_bpFaced",
-                        "w_bpSaved" : "player2_bpSaved",
-                        "w_SvGms" : "player2_SvGms",
-                        "w_2ndWon" : "player2_2ndWon",
-                        "w_1stWon" : "player2_1stWon",
-                        "w_1stIn" : "player2_1stIn",
-                        "loser_seed" : "player1_seed",
-                        "loser_name" : "player1_name",
-                        "loser_rank" : "player1_rank",
-                        "loser_hand" : "player1_hand",
-                        "loser_ht" : "player1_ht",
-                        "loser_ioc" : "player1_ioc",
-                        "loser_rank_points" : "player1_rank_points",
-                        "loser_id" : "player1_id",
-                        "loser_entry" : "player1_entry",
-                        "loser_age" : "player1_age",
-                        "l_ace" : "player1_ace",
-                        "l_df" : "player1_df",
-                        "l_svpt" : "player1_svpt",
-                        "l_bpFaced" : "player1_bpFaced",
-                        "l_bpSaved" : "player1_bpSaved",
-                        "l_SvGms" : "player1_SvGms",
-                        "l_2ndWon" : "player1_2ndWon",
-                        "l_1stWon" : "player1_1stWon",
-                        "l_1stIn" : "player1_1stIn"
+                    if k % 2 == 0:
+                        # winner => player 2
+                        read_file.rename(index=str, columns={
+                            "winner_seed" : "player2_seed",
+                            "winner_name" : "player2_name",
+                            "winner_rank" : "player2_rank",
+                            "winner_hand" : "player2_hand",
+                            "winner_ht" : "player2_ht",
+                            "winner_ioc" : "player2_ioc",
+                            "winner_rank_points" : "player2_rank_points",
+                            "winner_id" : "player2_id",
+                            "winner_entry" : "player2_entry",
+                            "winner_age" : "player2_age",
+                            "w_ace" : "player2_ace",
+                            "w_df" : "player2_df",
+                            "w_svpt" : "player2_svpt",
+                            "w_bpFaced" : "player2_bpFaced",
+                            "w_bpSaved" : "player2_bpSaved",
+                            "w_SvGms" : "player2_SvGms",
+                            "w_2ndWon" : "player2_2ndWon",
+                            "w_1stWon" : "player2_1stWon",
+                            "w_1stIn" : "player2_1stIn",
+                            "loser_seed" : "player1_seed",
+                            "loser_name" : "player1_name",
+                            "loser_rank" : "player1_rank",
+                            "loser_hand" : "player1_hand",
+                            "loser_ht" : "player1_ht",
+                            "loser_ioc" : "player1_ioc",
+                            "loser_rank_points" : "player1_rank_points",
+                            "loser_id" : "player1_id",
+                            "loser_entry" : "player1_entry",
+                            "loser_age" : "player1_age",
+                            "l_ace" : "player1_ace",
+                            "l_df" : "player1_df",
+                            "l_svpt" : "player1_svpt",
+                            "l_bpFaced" : "player1_bpFaced",
+                            "l_bpSaved" : "player1_bpSaved",
+                            "l_SvGms" : "player1_SvGms",
+                            "l_2ndWon" : "player1_2ndWon",
+                            "l_1stWon" : "player1_1stWon",
+                            "l_1stIn" : "player1_1stIn"
+                        }, inplace=True)
+                    else:
+                        # winner => player 1
+                        read_file.rename(index=str, columns={
+                        "winner_seed" : "player1_seed",
+                        "winner_name" : "player1_name",
+                        "winner_rank" : "player1_rank",
+                        "winner_hand" : "player1_hand",
+                        "winner_ht" : "player1_ht",
+                        "winner_ioc" : "player1_ioc",
+                        "winner_rank_points" : "player1_rank_points",
+                        "winner_id" : "player1_id",
+                        "winner_entry" : "player1_entry",
+                        "winner_age" : "player1_age",
+                        "w_ace" : "player1_ace",
+                        "w_df" : "player1_df",
+                        "w_svpt" : "player1_svpt",
+                        "w_bpFaced" : "player1_bpFaced",
+                        "w_bpSaved" : "player1_bpSaved",
+                        "w_SvGms" : "player1_SvGms",
+                        "w_2ndWon" : "player1_2ndWon",
+                        "w_1stWon" : "player1_1stWon",
+                        "w_1stIn" : "player1_1stIn",
+                        "loser_seed" : "player2_seed",
+                        "loser_name" : "player2_name",
+                        "loser_rank" : "player2_rank",
+                        "loser_hand" : "player2_hand",
+                        "loser_ht" : "player2_ht",
+                        "loser_ioc" : "player2_ioc",
+                        "loser_rank_points" : "player2_rank_points",
+                        "loser_id" : "player2_id",
+                        "loser_entry" : "player2_entry",
+                        "loser_age" : "player2_age",
+                        "l_ace" : "player2_ace",
+                        "l_df" : "player2_df",
+                        "l_svpt" : "player2_svpt",
+                        "l_bpFaced" : "player2_bpFaced",
+                        "l_bpSaved" : "player2_bpSaved",
+                        "l_SvGms" : "player2_SvGms",
+                        "l_2ndWon" : "player2_2ndWon",
+                        "l_1stWon" : "player2_1stWon",
+                        "l_1stIn" : "player2_1stIn"
                     }, inplace=True)
-                    # print("New Header: ")
-                    # print(read_file.head(1))
 
                 for index, row in read_file.iterrows():
                     # if 'futures' in file: year = file.split('_')[3].split('.')[0]
                     if 'qual_chall' in file: year = file.split('_')[4].split('.')[0]
                     else: year = file.split('_')[2].split('.')[0]
+
+                    t_name = str(row['tourney_name'])
+                    t_id = str(row['tourney_id'])
+                    row_t_name = map_tourneys_atp_df.loc[map_tourneys_atp_df['old_name'] == t_name]
+                    t_name_new = row_t_name['new_name'].values[0]
+                    row_t_id = unique_tourneys_atp_df.loc[unique_tourneys_atp_df['tourney_name'] == t_name_new]
+                    t_id_new = row_t_id['id'].values[0]
+
                     filewriter_features.writerow([year,
-                                                row['tourney_id'], row['player2_id'], row['player1_id'],
+                                                t_id_new, row['player2_id'], row['player1_id'],
                                                 row['surface'], row['draw_size'], row['best_of'],
                                                 row['player2_seed'], row['player2_hand'], 
                                                 row['player2_ht'], row['player2_age'], 
@@ -129,7 +187,8 @@ def read_datasets_atp():
                     set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l,\
                         t1, t2, t3, t4, t5 = get_set_values(str(row['score']), file)
                     
-                    filewriter_labels.writerow([set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l,
+                    filewriter_labels.writerow([str(k%2), #winner
+                                                set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l,
                                                 t1, t2, t3, t4, t5,
                                                 row['minutes'], row['player2_ace'], row['player2_df'], 
                                                 row['player2_svpt'], row['player2_1stIn'], row['player2_1stWon'], 
@@ -138,6 +197,7 @@ def read_datasets_atp():
                                                 row['player1_svpt'], row['player1_1stIn'], row['player1_1stWon'], 
                                                 row['player1_2ndWon'], row['player1_SvGms'], row['player1_bpSaved'],
                                                 row['player1_bpFaced']])
+            k = k + 1
 
 
 def read_datasets_wta():
@@ -161,8 +221,8 @@ def read_datasets_wta():
         #           player2_2ndWon, player2_SvGms, player2_bpSaved, player2_bpFaced, player1_ace, player1_df, player1_svpt, 
         #           player1_1stIn, player1_1stWon, player1_2ndWon, player1_SvGms, player1_bpSaved, player1_bpFaced
 
-    with open('D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_wta_modified_features.csv', 'w') as features,\
-            open('D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_wta_modified_labels.csv', 'w') as labels:
+    with open('D:\\EXPERT\\lab_se\\TennisPrediction\\combined_wta_modified_features.csv', 'w') as features,\
+            open('D:\\EXPERT\\lab_se\\TennisPrediction\\combined_wta_modified_labels.csv', 'w') as labels:
         filewriter_features = csv.writer(features, delimiter=',',
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
         filewriter_labels = csv.writer(labels, delimiter=',',
@@ -172,60 +232,109 @@ def read_datasets_wta():
                                     'surface', 'draw_size', 'best_of', 'player2_seed', 'player2_hand', 'player2_ht',
                                     'player2_age', 'player2_rank', 'player1_seed', 'player1_hand', 'player1_ht', 
                                     'player1_age', 'player1_rank'])
-        filewriter_labels.writerow(['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+        filewriter_labels.writerow(['winner',
+                                    'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                                     't1', 't2', 't3', 't4', 't5',
                                     'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                                     'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                                     'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
                                     'player1_bpFaced'])
 
+        unique_tourneys_wta = "D:\\EXPERT\\lab_se\\tennis_wta\\unique_tourneys_wta.csv"
+        map_tourneys_wta = "D:\\EXPERT\\lab_se\\TennisPrediction\\wta_tourney_map.csv"
+        unique_tourneys_wta_df = pd.read_csv(unique_tourneys_wta, encoding = "ISO-8859-1")
+        map_tourneys_wta_df = pd.read_csv(map_tourneys_wta, encoding = "ISO-8859-1")
+
+        k = 0
         for file in os.listdir(WTA_path):
             if "wta_matches" in file and "futures" not in file:
                 read_file = pd.read_csv(os.path.join(WTA_path, file), parse_dates=False, encoding = "ISO-8859-1")
                 print("Processing ... " + os.path.join(WTA_path, file))
                 if RENAME == 1:
-                    read_file.rename(index=str, columns={
-                        "winner_seed" : "player2_seed",
-                        "winner_name" : "player2_name",
-                        "winner_rank" : "player2_rank",
-                        "winner_hand" : "player2_hand",
-                        "winner_ht" : "player2_ht",
-                        "winner_ioc" : "player2_ioc",
-                        "winner_rank_points" : "player2_rank_points",
-                        "winner_id" : "player2_id",
-                        "winner_entry" : "player2_entry",
-                        "winner_age" : "player2_age",
-                        "w_ace" : "player2_ace",
-                        "w_df" : "player2_df",
-                        "w_svpt" : "player2_svpt",
-                        "w_bpFaced" : "player2_bpFaced",
-                        "w_bpSaved" : "player2_bpSaved",
-                        "w_SvGms" : "player2_SvGms",
-                        "w_2ndWon" : "player2_2ndWon",
-                        "w_1stWon" : "player2_1stWon",
-                        "w_1stIn" : "player2_1stIn",
-                        "loser_seed" : "player1_seed",
-                        "loser_name" : "player1_name",
-                        "loser_rank" : "player1_rank",
-                        "loser_hand" : "player1_hand",
-                        "loser_ht" : "player1_ht",
-                        "loser_ioc" : "player1_ioc",
-                        "loser_rank_points" : "player1_rank_points",
-                        "loser_id" : "player1_id",
-                        "loser_entry" : "player1_entry",
-                        "loser_age" : "player1_age",
-                        "l_ace" : "player1_ace",
-                        "l_df" : "player1_df",
-                        "l_svpt" : "player1_svpt",
-                        "l_bpFaced" : "player1_bpFaced",
-                        "l_bpSaved" : "player1_bpSaved",
-                        "l_SvGms" : "player1_SvGms",
-                        "l_2ndWon" : "player1_2ndWon",
-                        "l_1stWon" : "player1_1stWon",
-                        "l_1stIn" : "player1_1stIn"
+                    if k % 2 == 0:
+                        # winner => player 2
+                        read_file.rename(index=str, columns={
+                            "winner_seed" : "player2_seed",
+                            "winner_name" : "player2_name",
+                            "winner_rank" : "player2_rank",
+                            "winner_hand" : "player2_hand",
+                            "winner_ht" : "player2_ht",
+                            "winner_ioc" : "player2_ioc",
+                            "winner_rank_points" : "player2_rank_points",
+                            "winner_id" : "player2_id",
+                            "winner_entry" : "player2_entry",
+                            "winner_age" : "player2_age",
+                            "w_ace" : "player2_ace",
+                            "w_df" : "player2_df",
+                            "w_svpt" : "player2_svpt",
+                            "w_bpFaced" : "player2_bpFaced",
+                            "w_bpSaved" : "player2_bpSaved",
+                            "w_SvGms" : "player2_SvGms",
+                            "w_2ndWon" : "player2_2ndWon",
+                            "w_1stWon" : "player2_1stWon",
+                            "w_1stIn" : "player2_1stIn",
+                            "loser_seed" : "player1_seed",
+                            "loser_name" : "player1_name",
+                            "loser_rank" : "player1_rank",
+                            "loser_hand" : "player1_hand",
+                            "loser_ht" : "player1_ht",
+                            "loser_ioc" : "player1_ioc",
+                            "loser_rank_points" : "player1_rank_points",
+                            "loser_id" : "player1_id",
+                            "loser_entry" : "player1_entry",
+                            "loser_age" : "player1_age",
+                            "l_ace" : "player1_ace",
+                            "l_df" : "player1_df",
+                            "l_svpt" : "player1_svpt",
+                            "l_bpFaced" : "player1_bpFaced",
+                            "l_bpSaved" : "player1_bpSaved",
+                            "l_SvGms" : "player1_SvGms",
+                            "l_2ndWon" : "player1_2ndWon",
+                            "l_1stWon" : "player1_1stWon",
+                            "l_1stIn" : "player1_1stIn"
+                        }, inplace=True)
+                    else:
+                        # winner => player 1
+                        read_file.rename(index=str, columns={
+                        "winner_seed" : "player1_seed",
+                        "winner_name" : "player1_name",
+                        "winner_rank" : "player1_rank",
+                        "winner_hand" : "player1_hand",
+                        "winner_ht" : "player1_ht",
+                        "winner_ioc" : "player1_ioc",
+                        "winner_rank_points" : "player1_rank_points",
+                        "winner_id" : "player1_id",
+                        "winner_entry" : "player1_entry",
+                        "winner_age" : "player1_age",
+                        "w_ace" : "player1_ace",
+                        "w_df" : "player1_df",
+                        "w_svpt" : "player1_svpt",
+                        "w_bpFaced" : "player1_bpFaced",
+                        "w_bpSaved" : "player1_bpSaved",
+                        "w_SvGms" : "player1_SvGms",
+                        "w_2ndWon" : "player1_2ndWon",
+                        "w_1stWon" : "player1_1stWon",
+                        "w_1stIn" : "player1_1stIn",
+                        "loser_seed" : "player2_seed",
+                        "loser_name" : "player2_name",
+                        "loser_rank" : "player2_rank",
+                        "loser_hand" : "player2_hand",
+                        "loser_ht" : "player2_ht",
+                        "loser_ioc" : "player2_ioc",
+                        "loser_rank_points" : "player2_rank_points",
+                        "loser_id" : "player2_id",
+                        "loser_entry" : "player2_entry",
+                        "loser_age" : "player2_age",
+                        "l_ace" : "player2_ace",
+                        "l_df" : "player2_df",
+                        "l_svpt" : "player2_svpt",
+                        "l_bpFaced" : "player2_bpFaced",
+                        "l_bpSaved" : "player2_bpSaved",
+                        "l_SvGms" : "player2_SvGms",
+                        "l_2ndWon" : "player2_2ndWon",
+                        "l_1stWon" : "player2_1stWon",
+                        "l_1stIn" : "player2_1stIn"
                     }, inplace=True)
-                    # print("New Header: ")
-                    # print(read_file.head(1))
 
                 for index, row in read_file.iterrows():
                     # if 'futures' in file: year = file.split('_')[3].split('.')[0]
@@ -233,8 +342,16 @@ def read_datasets_wta():
                         year = file.split('_')[4].split('.')[0]
                     else: 
                         year = file.split('_')[2].split('.')[0]
+
+                    t_name = str(row['tourney_name'])
+                    t_id = str(row['tourney_id'])
+                    row_t_name = map_tourneys_wta_df.loc[map_tourneys_wta_df['old_name'] == t_name]
+                    t_name_new = row_t_name['new_name'].values[0]
+                    row_t_id = unique_tourneys_wta_df.loc[unique_tourneys_wta_df['tourney_name'] == t_name_new]
+                    t_id_new = row_t_id['id'].values[0]
+
                     filewriter_features.writerow([year,
-                                                row['tourney_id'], row['player2_id'], row['player1_id'],
+                                                t_id_new, row['player2_id'], row['player1_id'],
                                                 row['surface'], row['draw_size'], row['best_of'],
                                                 row['player2_seed'], row['player2_hand'], 
                                                 row['player2_ht'], row['player2_age'], 
@@ -245,7 +362,8 @@ def read_datasets_wta():
                     set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l,\
                         t1, t2, t3, t4, t5 = get_set_values(str(row['score']), file)
                     
-                    filewriter_labels.writerow([set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l,
+                    filewriter_labels.writerow([str(k%2), #winner
+                                                set1_w, set1_l, set2_w, set2_l, set3_w, set3_l, set4_w, set4_l, set5_w, set5_l,
                                                 t1, t2, t3, t4, t5,
                                                 row['minutes'], row['player2_ace'], row['player2_df'], 
                                                 row['player2_svpt'], row['player2_1stIn'], row['player2_1stWon'], 
@@ -254,93 +372,7 @@ def read_datasets_wta():
                                                 row['player1_svpt'], row['player1_1stIn'], row['player1_1stWon'], 
                                                 row['player1_2ndWon'], row['player1_SvGms'], row['player1_bpSaved'],
                                                 row['player1_bpFaced']])
-
-
-def atp_prepare():
-    with open('D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_atp_modified_features.csv', 'w') as features,\
-            open('D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_atp_modified_labels.csv', 'w') as labels:
-        
-        filewriter_features = csv.writer(features, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        filewriter_labels = csv.writer(labels, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-
-        filewriter_features.writerow(['year', 'tourney_id', 'player2_id', 'player1_id',
-                                    'surface', 'draw_size', 'player2_seed', 'player2_hand', 'player2_ht',
-                                    'player2_age', 'player2_rank', 'player1_seed', 'player1_hand', 'player1_ht', 
-                                    'player1_age', 'player1_rank'])
-        filewriter_labels.writerow(['score', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
-                                    'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
-                                    'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
-                                    'player1_bpFaced'])
-        # os.chdir(ATP_path)
-        
-        filenames = os.listdir(ATP_path)
-        print(filenames)
-        finaldf = pd.concat( [ pd.read_csv(os.path.join(ATP_path, f), dtype={'tourney_id': np.str}) for f in filenames ] )
-        print(finaldf.head(0))
-
-        if RENAME == 1:
-            finaldf.rename(index=str, columns={
-                "winner_seed" : "player2_seed",
-                "winner_name" : "player2_name",
-                "winner_rank" : "player2_rank",
-                "winner_hand" : "player2_hand",
-                "winner_ht" : "player2_ht",
-                "winner_ioc" : "player2_ioc",
-                "winner_rank_points" : "player2_rank_points",
-                "winner_id" : "player2_id",
-                "winner_entry" : "player2_entry",
-                "winner_age" : "player2_age",
-                "w_ace" : "player2_ace",
-                "w_df" : "player2_df",
-                "w_svpt" : "player2_svpt",
-                "w_bpFaced" : "player2_bpFaced",
-                "w_bpSaved" : "player2_bpSaved",
-                "w_SvGms" : "player2_SvGms",
-                "w_2ndWon" : "player2_2ndWon",
-                "w_1stWon" : "player2_1stWon",
-                "w_1stIn" : "player2_1stIn",
-                "loser_seed" : "player1_seed",
-                "loser_name" : "player1_name",
-                "loser_rank" : "player1_rank",
-                "loser_hand" : "player1_hand",
-                "loser_ht" : "player1_ht",
-                "loser_ioc" : "player1_ioc",
-                "loser_rank_points" : "player1_rank_points",
-                "loser_id" : "player1_id",
-                "loser_entry" : "player1_entry",
-                "loser_age" : "player1_age",
-                "l_ace" : "player1_ace",
-                "l_df" : "player1_df",
-                "l_svpt" : "player1_svpt",
-                "l_bpFaced" : "player1_bpFaced",
-                "l_bpSaved" : "player1_bpSaved",
-                "l_SvGms" : "player1_SvGms",
-                "l_2ndWon" : "player1_2ndWon",
-                "l_1stWon" : "player1_1stWon",
-                "l_1stIn" : "player1_1stIn"
-            }, inplace=True)
-            # print("New Header: ")
-            # print(read_file.head(1))
-
-        for index, row in finaldf.iterrows():
-            filewriter_features.writerow([str(row['tourney_id']).split('-')[0],
-                                        row['tourney_id'], row['player2_id'], row['player1_id'],
-                                        row['surface'], row['draw_size'], 
-                                        row['player2_seed'], row['player2_hand'], 
-                                        row['player2_ht'], row['player2_age'], 
-                                        row['player2_rank'], row['player1_seed'],
-                                        row['player1_hand'], row['player1_ht'],
-                                        row['player1_age'], row['player1_rank']])
-        for index, row in finaldf.iterrows():
-            filewriter_labels.writerow([row['score'], row['minutes'], row['player2_ace'], row['player2_df'], 
-                                        row['player2_svpt'], row['player2_1stIn'], row['player2_1stWon'], 
-                                        row['player2_2ndWon'], row['player2_SvGms'], row['player2_bpSaved'], 
-                                        row['player2_bpFaced'], row['player1_ace'], row['player1_df'], 
-                                        row['player1_svpt'], row['player1_1stIn'], row['player1_1stWon'], 
-                                        row['player1_2ndWon'], row['player1_SvGms'], row['player1_bpSaved'],
-                                        row['player1_bpFaced']])
+            k = k + 1
 
 
 def get_set_values(score, file):
@@ -450,7 +482,6 @@ def get_set_values(score, file):
 def main():
     # read_datasets_atp()
     read_datasets_wta()
-    # atp_prepare()
 
 
 if __name__ == "__main__":

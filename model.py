@@ -15,12 +15,12 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.pipeline import Pipeline
 
-ATP_file_features = 'D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_atp_modified_features.csv'
-ATP_file_labels = 'D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_atp_modified_labels.csv'
-WTA_file_features = 'D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_wta_modified_features.csv'
-WTA_file_labels = 'D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\combined_wta_modified_labels.csv'
+ATP_file_features = 'D:\\EXPERT\\lab_se\\TennisPrediction\\combined_atp_modified_features.csv'
+ATP_file_labels = 'D:\\EXPERT\\lab_se\\TennisPrediction\\combined_atp_modified_labels.csv'
+WTA_file_features = 'D:\\EXPERT\\lab_se\\TennisPrediction\\combined_wta_modified_features.csv'
+WTA_file_labels = 'D:\\EXPERT\\lab_se\\TennisPrediction\\combined_wta_modified_labels.csv'
 
-RESULTS = 'D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\results'
+RESULTS = 'D:\\EXPERT\\lab_se\\results'
 
 global ATP_features_train, ATP_features_test, ATP_labels_train, ATP_labels_test
 global WTA_features_train, WTA_features_test, WTA_labels_train, WTA_labels_test
@@ -85,16 +85,16 @@ def scale_continous_discrete(features):
         # continous features: year, tourney_id, player2_id, player1_id, player2_seed, player2_ht, 
         #                       player2_age, player2_rank, player1_seed, player1_ht, player1_age, player1_rank
 
-    set_C = "-QWERTYUIOPASDFGHJKLZXCVBNM"
-    for index, row in features.iterrows():
-        id = row['tourney_id']
-        for c in set_C:
-            if c in id:
-                id = id.split(c)[0] + id.split(c)[1]
-        # print(id)
-        # if 'Q' in id:
-        #     print(id)
-        features.set_value(index, 'tourney_id', id)
+    # set_C = "-QWERTYUIOPASDFGHJKLZXCVBNM"
+    # for index, row in features.iterrows():
+    #     id = row['tourney_id']
+    #     for c in set_C:
+    #         if c in id:
+    #             id = id.split(c)[0] + id.split(c)[1]
+    #     # print(id)
+    #     # if 'Q' in id:
+    #     #     print(id)
+    #     features.set_value(index, 'tourney_id', id)
 
     for index, row in features.iterrows():
         r1 = str(row['player1_seed'])
@@ -350,7 +350,7 @@ def eval_shapes_atp():
                             'surface_Hard', 'surface_None', 'player1_hand_0', 'player1_hand_L', 
                             'player1_hand_R', 'player1_hand_U', 'player2_hand_0', 'player2_hand_L', 'player2_hand_R', 
                             'player2_hand_U', 'best_of_3', 'best_of_5'])
-    df1.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\ATP_features_train.csv", sep='\t', encoding='utf-8')
+    df1.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\ATP_features_train.csv", sep='\t', encoding='utf-8')
     df2 = pd.DataFrame(data=ATP_features_test,
                     columns=['year', 'tourney_id', 'player2_id', 'player1_id', 'player2_seed', 'player2_ht',
                             'player2_age', 'player2_rank', 'player1_seed', 'player1_ht', 'player1_age', 'player1_rank',
@@ -361,12 +361,12 @@ def eval_shapes_atp():
                             'surface_Hard', 'surface_None', 'player1_hand_0', 'player1_hand_L', 
                             'player1_hand_R', 'player1_hand_U', 'player2_hand_0', 'player2_hand_L', 'player2_hand_R', 
                             'player2_hand_U', 'best_of_3', 'best_of_5'])
-    df2.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\ATP_features_test.csv", sep='\t', encoding='utf-8')
+    df2.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\ATP_features_test.csv", sep='\t', encoding='utf-8')
     
     df3 = pd.DataFrame(data=ATP_labels_train)
-    df3.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\ATP_labels_train.csv", sep='\t', encoding='utf-8')
+    df3.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\ATP_labels_train.csv", sep='\t', encoding='utf-8')
     df4 = pd.DataFrame(data=ATP_labels_test)
-    df4.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\ATP_labels_test.csv", sep='\t', encoding='utf-8')
+    df4.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\ATP_labels_test.csv", sep='\t', encoding='utf-8')
 
     # print(ATP_features_test.values[:,0].shape, ATP_labels_test.values[:,0].shape)
 
@@ -388,7 +388,7 @@ def eval_shapes_wta():
                             'surface_Hard', 'player1_hand_0', 'player1_hand_L', 
                             'player1_hand_R', 'player1_hand_U', 'player2_hand_0', 'player2_hand_L', 'player2_hand_R', 
                             'player2_hand_U', 'best_of_3', 'best_of_5'])
-    df1.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\WTA_features_train.csv", sep='\t', encoding='utf-8')
+    df1.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\WTA_features_train.csv", sep='\t', encoding='utf-8')
     df2 = pd.DataFrame(data=WTA_features_test,
                     columns=['year', 'tourney_id', 'player2_id', 'player1_id', 'player2_seed', 'player2_ht',
                             'player2_age', 'player2_rank', 'player1_seed', 'player1_ht', 'player1_age', 'player1_rank',
@@ -399,22 +399,22 @@ def eval_shapes_wta():
                             'surface_Hard', 'player1_hand_0', 'player1_hand_L', 
                             'player1_hand_R', 'player1_hand_U', 'player2_hand_0', 'player2_hand_L', 'player2_hand_R', 
                             'player2_hand_U', 'best_of_3', 'best_of_5'])
-    df2.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\WTA_features_test.csv", sep='\t', encoding='utf-8')
+    df2.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\WTA_features_test.csv", sep='\t', encoding='utf-8')
     
     df3 = pd.DataFrame(data=WTA_labels_train)
-    df3.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\WTA_labels_train.csv", sep='\t', encoding='utf-8')
+    df3.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\WTA_labels_train.csv", sep='\t', encoding='utf-8')
     df4 = pd.DataFrame(data=WTA_labels_test)
-    df4.to_csv("D:\\college\\an4CTI\\SEMESTER_2\\SE\\lab\\WTA_labels_test.csv", sep='\t', encoding='utf-8')
+    df4.to_csv("D:\\EXPERT\\lab_se\\TennisPrediction\\WTA_labels_test.csv", sep='\t', encoding='utf-8')
 
 
 def baseline_model_atp():
     model = Sequential()
     model.add(Dense(128, input_dim=45, kernel_initializer='normal', activation='relu'))
     model.add(Dense(64, kernel_initializer='normal', activation='relu'))
-    model.add(Dense(64, kernel_initializer='normal', activation='relu'))
-    model.add(Dense(34, kernel_initializer='normal', activation='linear'))
+    model.add(Dense(64, kernel_initializer='normal', activation='linear'))
+    model.add(Dense(35, kernel_initializer='normal', activation='linear'))
 
-    sgd = optimizers.SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+    # rms = optimizers.RMSprop(lr=0.005)
     
     model.compile(loss='mean_squared_logarithmic_error', optimizer='sgd', metrics=['mse', 'mae', 'mape', 'cosine', 'accuracy'])
     return model
@@ -425,15 +425,16 @@ def baseline_model_wta():
     model.add(Dense(128, input_dim=44, kernel_initializer='normal', activation='relu'))
     model.add(Dense(64, kernel_initializer='normal', activation='relu'))
     model.add(Dense(64, kernel_initializer='normal', activation='relu'))
-    model.add(Dense(34, kernel_initializer='normal', activation='linear'))
+    model.add(Dense(64, kernel_initializer='normal', activation='linear'))
+    model.add(Dense(35, kernel_initializer='normal', activation='linear'))
 
     # sgd = optimizers.SGD(lr=0.0001, decay=1e-6, momentum=0.8, nesterov=True)
-    rms = optimizers.RMSprop(lr=0.005)
+    # rms = optimizers.RMSprop(lr=0.005)
     # adam = optimizers.Adam(lr=0.01)
     # nadam = optimizers.Nadam(lr=0.01)
     # adagrad = optimizers.Adagrad()
     
-    model.compile(loss='mean_squared_logarithmic_error', optimizer=rms, metrics=['mse', 'mae', 'mape', 'cosine', 'accuracy'])
+    model.compile(loss='mean_squared_logarithmic_error', optimizer='sgd', metrics=['mse', 'mae', 'mape', 'cosine', 'accuracy'])
     return model
 
 
@@ -558,7 +559,8 @@ def compare_predictions_atp(predictions):
     # show the inputs and predicted outputs
     print(ATP_labels_test.shape, predictions.shape)
     dave_p = pd.DataFrame(data=predictions,
-                        columns=['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+                        columns=['winner',
+                                'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                                 't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                                 'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                                 'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
@@ -574,7 +576,8 @@ def compare_predictions_wta(predictions):
     # show the inputs and predicted outputs
     print(WTA_labels_test.shape, predictions.shape)
     dave_p = pd.DataFrame(data=predictions,
-                        columns=['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+                        columns=['winner',
+                                'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                                 't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                                 'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                                 'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
@@ -620,7 +623,7 @@ def train_test_baseline_wta():
 
     global WTA_features_train, WTA_labels_train
 
-    history = model.fit(WTA_features_train, WTA_labels_train, epochs=250, batch_size=256, validation_split = 0.15, callbacks=callbacks_list, verbose=1)
+    history = model.fit(WTA_features_train, WTA_labels_train, epochs=200, batch_size=256, validation_split = 0.15, callbacks=callbacks_list, verbose=1)
     
     plot_train(history)
 
@@ -644,14 +647,16 @@ def predict_best_atp():
     # plt.show()
 
     Y_pred_df = pd.DataFrame(data=Y_pred, 
-                            columns=['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+                            columns=['winner',
+                            'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                             't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                             'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                             'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
                             'player1_bpFaced'])
     
     ATP_labels_test_df = pd.DataFrame(data=ATP_labels_test, 
-                        columns=['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+                        columns=['winner',
+                        'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                         't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                         'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                         'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
@@ -661,39 +666,17 @@ def predict_best_atp():
         filewriter_output = csv.writer(output, delimiter=',',
                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
         
-        filewriter_output.writerow(['type', 'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 
+        filewriter_output.writerow(['type', 'winner',
+                                    'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 
                                     'set5_w', 'set5_l', 't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 
                                     'player2_svpt', 'player2_1stIn', 'player2_1stWon', 'player2_2ndWon', 'player2_SvGms', 
                                     'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 'player1_svpt', 
                                     'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved', 
                                     'player1_bpFaced'])
         
-        # for index_pred, row_pred, index_actual, row_actual in Y_pred_df.iterrows(), ATP_labels_test_df.iterrows():
-        #     filewriter_output.writerow(['predicted', # predicted
-        #                                 row_pred['set1_w'], row_pred['set1_l'], row_pred['set2_w'], row_pred['set2_l'], 
-        #                                 row_pred['set3_w'], row_pred['set3_l'], row_pred['set4_w'], row_pred['set4_l'], 
-        #                                 row_pred['set5_w'], row_pred['set5_l'], row_pred['t1'], row_pred['t2'], row_pred['t3'], 
-        #                                 row_pred['t4'], row_pred['t5'], row_pred['minutes'], row_pred['player2_ace'], 
-        #                                 row_pred['player2_df'], row_pred['player2_svpt'], row_pred['player2_1stIn'], 
-        #                                 row_pred['player2_1stWon'], row_pred['player2_2ndWon'], row_pred['player2_SvGms'], 
-        #                                 row_pred['player2_bpSaved'], row_pred['player2_bpFaced'], row_pred['player1_ace'], 
-        #                                 row_pred['player1_df'], row_pred['player1_svpt'], row_pred['player1_1stIn'], 
-        #                                 row_pred['player1_1stWon'], row_pred['player1_2ndWon'], row_pred['player1_SvGms'], 
-        #                                 row_pred['player1_bpSaved'], row_pred['player1_bpFaced']])
-        #     filewriter_output.writerow(['actual',  # actual
-        #                                 row_actual['set1_w'], row_actual['set1_l'], row_actual['set2_w'], row_actual['set2_l'], 
-        #                                 row_actual['set3_w'], row_actual['set3_l'], row_actual['set4_w'], row_actual['set4_l'], 
-        #                                 row_actual['set5_w'], row_actual['set5_l'], row_actual['t1'], row_actual['t2'], 
-        #                                 row_actual['t3'], row_actual['t4'], row_actual['t5'], row_actual['minutes'], 
-        #                                 row_actual['player2_ace'], row_actual['player2_df'], row_actual['player2_svpt'], 
-        #                                 row_actual['player2_1stIn'], row_actual['player2_1stWon'], row_actual['player2_2ndWon'], 
-        #                                 row_actual['player2_SvGms'], row_actual['player2_bpSaved'], row_actual['player2_bpFaced'], 
-        #                                 row_actual['player1_ace'], row_actual['player1_df'], row_actual['player1_svpt'], 
-        #                                 row_actual['player1_1stIn'], row_actual['player1_1stWon'], row_actual['player1_2ndWon'], 
-        #                                 row_actual['player1_SvGms'], row_actual['player1_bpSaved'], row_actual['player1_bpFaced']])
-        
         for i, j in zip(Y_pred_df.index, ATP_labels_test_df.index): #df.loc[i,'Age']
             filewriter_output.writerow(['predicted', # predicted
+                                        Y_pred_df.loc[i, 'winner'],
                                         Y_pred_df.loc[i, 'set1_w'], Y_pred_df.loc[i, 'set1_l'], Y_pred_df.loc[i, 'set2_w'], Y_pred_df.loc[i, 'set2_l'], 
                                         Y_pred_df.loc[i, 'set3_w'], Y_pred_df.loc[i, 'set3_l'], Y_pred_df.loc[i, 'set4_w'], Y_pred_df.loc[i, 'set4_l'], 
                                         Y_pred_df.loc[i, 'set5_w'], Y_pred_df.loc[i, 'set5_l'], Y_pred_df.loc[i, 't1'], Y_pred_df.loc[i, 't2'], Y_pred_df.loc[i, 't3'], 
@@ -705,6 +688,7 @@ def predict_best_atp():
                                         Y_pred_df.loc[i, 'player1_1stWon'], Y_pred_df.loc[i, 'player1_2ndWon'], Y_pred_df.loc[i, 'player1_SvGms'], 
                                         Y_pred_df.loc[i, 'player1_bpSaved'], Y_pred_df.loc[i, 'player1_bpFaced']])
             filewriter_output.writerow(['actual',  # actual
+                                        ATP_labels_test_df.loc[j, 'winner'],
                                         ATP_labels_test_df.loc[j, 'set1_w'], ATP_labels_test_df.loc[j, 'set1_l'], ATP_labels_test_df.loc[j, 'set2_w'], ATP_labels_test_df.loc[j, 'set2_l'], 
                                         ATP_labels_test_df.loc[j, 'set3_w'], ATP_labels_test_df.loc[j, 'set3_l'], ATP_labels_test_df.loc[j, 'set4_w'], ATP_labels_test_df.loc[j, 'set4_l'], 
                                         ATP_labels_test_df.loc[j, 'set5_w'], ATP_labels_test_df.loc[j, 'set5_l'], ATP_labels_test_df.loc[j, 't1'], ATP_labels_test_df.loc[j, 't2'], 
@@ -727,14 +711,16 @@ def predict_best_wta():
     print(Y_pred.shape, WTA_labels_test.shape)
 
     Y_pred_df = pd.DataFrame(data=Y_pred, 
-                            columns=['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+                            columns=['winner',
+                            'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                             't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                             'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                             'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
                             'player1_bpFaced'])
     
     WTA_labels_test_df = pd.DataFrame(data=WTA_labels_test, 
-                        columns=['set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
+                        columns=['winner',
+                        'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 'set5_w', 'set5_l',
                         't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 'player2_svpt', 'player2_1stIn', 'player2_1stWon',
                         'player2_2ndWon', 'player2_SvGms', 'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 
                         'player1_svpt', 'player1_1stIn', 'player1_1stWon', 'player1_2ndWon', 'player1_SvGms', 'player1_bpSaved',
@@ -744,7 +730,8 @@ def predict_best_wta():
         filewriter_output = csv.writer(output, delimiter=',',
                         quotechar='|', quoting=csv.QUOTE_MINIMAL)
         
-        filewriter_output.writerow(['type', 'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 
+        filewriter_output.writerow(['type', 'winner',
+                                    'set1_w', 'set1_l', 'set2_w', 'set2_l', 'set3_w', 'set3_l', 'set4_w', 'set4_l', 
                                     'set5_w', 'set5_l', 't1', 't2', 't3', 't4', 't5', 'minutes', 'player2_ace', 'player2_df', 
                                     'player2_svpt', 'player2_1stIn', 'player2_1stWon', 'player2_2ndWon', 'player2_SvGms', 
                                     'player2_bpSaved', 'player2_bpFaced', 'player1_ace', 'player1_df', 'player1_svpt', 
@@ -753,6 +740,7 @@ def predict_best_wta():
 
         for i, j in zip(Y_pred_df.index, WTA_labels_test_df.index): #df.loc[i,'Age']
             filewriter_output.writerow(['predicted', # predicted
+                                        Y_pred_df.loc[i, 'winner'],
                                         Y_pred_df.loc[i, 'set1_w'], Y_pred_df.loc[i, 'set1_l'], Y_pred_df.loc[i, 'set2_w'], Y_pred_df.loc[i, 'set2_l'], 
                                         Y_pred_df.loc[i, 'set3_w'], Y_pred_df.loc[i, 'set3_l'], Y_pred_df.loc[i, 'set4_w'], Y_pred_df.loc[i, 'set4_l'], 
                                         Y_pred_df.loc[i, 'set5_w'], Y_pred_df.loc[i, 'set5_l'], Y_pred_df.loc[i, 't1'], Y_pred_df.loc[i, 't2'], Y_pred_df.loc[i, 't3'], 
@@ -764,6 +752,7 @@ def predict_best_wta():
                                         Y_pred_df.loc[i, 'player1_1stWon'], Y_pred_df.loc[i, 'player1_2ndWon'], Y_pred_df.loc[i, 'player1_SvGms'], 
                                         Y_pred_df.loc[i, 'player1_bpSaved'], Y_pred_df.loc[i, 'player1_bpFaced']])
             filewriter_output.writerow(['actual',  # actual
+                                        WTA_labels_test_df.loc[j, 'winner'],
                                         WTA_labels_test_df.loc[j, 'set1_w'], WTA_labels_test_df.loc[j, 'set1_l'], WTA_labels_test_df.loc[j, 'set2_w'], WTA_labels_test_df.loc[j, 'set2_l'], 
                                         WTA_labels_test_df.loc[j, 'set3_w'], WTA_labels_test_df.loc[j, 'set3_l'], WTA_labels_test_df.loc[j, 'set4_w'], WTA_labels_test_df.loc[j, 'set4_l'], 
                                         WTA_labels_test_df.loc[j, 'set5_w'], WTA_labels_test_df.loc[j, 'set5_l'], WTA_labels_test_df.loc[j, 't1'], WTA_labels_test_df.loc[j, 't2'], 
@@ -778,13 +767,13 @@ def predict_best_wta():
 
 def main():
     # separate_atp()
+    # train_test_baseline_atp()
+    # predict_best_atp()
     separate_wta()
+    train_test_baseline_wta()
+    predict_best_wta()
     # evaluate_1()
     # evaluate_2()
-    # train_test_baseline_atp()
-    train_test_baseline_wta()
-    # predict_best_atp()
-    predict_best_wta()
 
 
 if __name__ == "__main__":

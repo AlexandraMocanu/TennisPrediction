@@ -1,0 +1,829 @@
+id,tourney_name
+0,Australian Chps.
+1,Los Angeles
+2,Cincinnati
+3,Barcelona
+4,Bournemouth
+5,US Open
+6,U.S. National Chps.
+7,Buenos Aires
+8,Monte Carlo
+9,Hamburg
+10,Rome
+11,Paris Indoor
+12,Kitzbuhel
+13,Gstaad
+14,Philadelphia
+15,Dusseldorf
+16,Wimbledon
+17,Hobart
+18,Roland Garros
+19,Davis Cup
+20,Montreal / Toronto
+21,Stockholm Open
+22,Australian Open
+23,Melbourne
+24,Auckland
+25,Caracas
+26,Indianapolis
+27,Bastad
+28,Boston
+29,Bristol
+30,Sydney
+31,Hilversum
+32,Queen's Club
+33,Barranquilla
+34,South Orange
+35,Washington
+36,Casablanca
+37,Phoenix
+38,St. Louis
+39,Berkeley
+40,Masters
+41,New York
+42,Tehran
+43,Paris
+44,Chicago
+45,Tanglewood
+46,Newport
+47,Dallas
+48,Sydney Outdoor
+49,Cologne
+50,Fort Worth
+51,Nice
+52,Richmond
+53,Columbus
+54,London
+55,Vancouver
+56,Quebec
+57,Merion
+58,Brussels
+59,Toronto
+60,Sacramento
+61,Hampton
+62,Miami
+63,Charlotte
+64,Wembley
+65,Salisbury
+66,Houston
+67,Bologna
+68,Macon
+69,Catania
+70,Palermo
+71,Denver
+72,Essen
+73,Montreal
+74,Alamo
+75,Rotterdam
+76,Baltimore
+77,Madrid
+78,Cleveland
+79,Brisbane
+80,Las Vegas
+81,Johannesburg
+82,Kansas City
+83,Des Moines
+84,Sydney N.S.W.
+85,London Indoor
+86,Bretton Woods
+87,Stockholm
+88,Omaha
+89,Albany
+90,Gothenberg
+91,Jacksonville
+92,Seattle
+93,Eastbourne
+94,Adelaide
+95,Milan
+96,Lacosta
+97,Osaka
+98,New Delhi
+99,Manila
+100,Aptos
+101,Djkarta
+102,Florence
+103,Munich
+104,Copenhagen
+105,Prague
+106,Berlin
+107,Salt Lake City
+108,Calgary
+109,Christchurch
+110,Paramus
+111,San Francisco
+112,Birmingham
+113,Jackson
+114,Valencia
+115,Sydney Indoor
+116,Tokyo
+117,Hong Kong
+118,Atlanta
+119,Roanoke
+120,Nottingham
+121,Tuscon
+122,Surbiton
+123,Cedar Grove
+124,Bombay
+125,Oslo
+126,Palm Desert
+127,New Orleans
+128,Richmond-WCT
+129,St. Petersburg
+130,Orlando
+131,Jakarta
+132,Beckenham
+133,Tempe
+134,Sao Paulo
+135,Little Rock
+136,Hempstead
+137,Manchester
+138,Dublin
+139,Vienna
+140,Maui
+141,North Conway
+142,Bermuda
+143,San Antonio
+144,Istanbul
+145,La Costa
+146,Boca Raton
+147,Perth
+148,Dayton Indoor
+149,Washington Indoor
+150,Memphis
+151,Cairo
+152,Melbourne Indoor
+153,Calcutta
+154,Stockholm 
+155,Toronto Indoor
+156,Aviles
+157,Shreveport
+158,Fairfield
+159,Bahamas
+160,Basel
+161,Tokyo Indoor
+162,Johannesburg 
+163,Tokyo Outdoor
+164,Monterrey
+165,Palm Springs
+166,Bangalore
+167,Pepsi Grand Slam
+168,Mexico City
+169,WCT Challenge Cup
+170,Dayton
+171,Nuremberg
+172,Palma
+173,Khartoum
+174,Lagos
+175,Santiago
+176,Taipei
+177,Ocean City
+178,Oviedo
+179,Helsinki
+180,ATP Finals
+181,Murcia
+182,Zurich
+183,Los Angeles PSW
+184,Virginia Beach
+185,Bogota
+186,San Jose
+187,Springfield
+188,Aix en Provence
+189,Laguna Niguel
+190,Colombus
+191,Sarasota
+192,Guadalajara
+193,Stuttgart Outdoor
+194,Hartford
+195,Aix-En-Provence
+196,Stowe
+197,Tulsa
+198,Nations Cup
+199,Forest Hills
+200,Lafayette
+201,Linz
+202,Quito
+203,Stuttgart Indoor
+204,Tel Aviv
+205,Rancho Mirage
+206,Bordeaux
+207,Montgomery
+208,Nancy
+209,Geneva
+210,Republic Of China
+211,Bangkok
+212,Frankfurt
+213,Metz
+214,San Juan
+215,Palm Harbor
+216,Sofia
+217,WCT Invitational
+218,Mar Del Plata
+219,Napa
+220,Tampa
+221,La
+222,Venice
+223,Vina Del Mar
+224,Ancona
+225,Amsterdam
+226,Dortmund
+227,Zell Am See
+228,Cap D'Adge
+229,Toulouse
+230,Itaparica
+231,Guaruja
+232,Strasbourg
+233,Genova
+234,Naples Finals
+235,Delray Beach
+236,Bahia
+237,Hilton Head
+238,Houston-WCT
+239,Ferrara
+240,Lisbon
+241,Detroit
+242,Bari
+243,Livingston
+244,Boca West
+245,Treviso
+246,Honolulu
+247,Olympics
+248,Luxembourg
+249,Marbella
+250,Stratton Mountain
+251,Fort Myers
+252,St. Vincent
+253,Athens
+254,Scottsdale
+255,Masters Dec
+256,Indian Wells
+257,Seoul
+258,Schenectady
+259,Key Biscayne
+260,Lyon
+261,Rye Brook
+262,Charleston
+263,Wellington
+264,Singapore
+265,San Marino
+266,Rio de Janeiro
+267,San Remo
+268,New Haven
+269,Canada Masters
+270,Cincinnati Masters
+271,Stockholm Masters
+272,Grand Slam Cup
+273,Paris Masters
+274,Kiawah Island
+275,Umag
+276,Moscow
+277,Rosmalen
+278,Long Island
+279,Miami Masters
+280,Indian Wells Masters
+281,Hamburg Masters
+282,Rome Masters
+283,Monte Carlo Masters
+284,Estoril
+285,Brasilia
+286,Buzios
+287,Bolzano
+288,Maceio
+289,Antwerp
+290,Durban
+291,Coral Springs
+292,Marseille
+293,Zaragoza
+294,Dubai
+295,Beijing
+296,Kuala Lumpur
+297,Doha
+298,Bucharest
+299,Halle
+300,Sun City
+301,Oahu
+302,Montevideo
+303,St. Poelten
+304,Ostrava
+305,Pinehurst
+306,Essen Masters
+307,Oporto
+308,Stuttgart Masters
+309,Zagreb
+310,Shanghai
+311,Tashkent
+312,Chennai
+313,Split
+314,Mallorca
+315,'s-Hertogenbosch
+316,Merano
+317,Brighton
+318,Masters Cup
+319,Acapulco
+320,Sopot
+321,Costa Do Sauipe
+322,Stuttgart
+323,Madrid Masters
+324,Amersfoort
+325,Wrexham
+326,Ho Chi Minh
+327,Mumbai
+328,Poertschach
+329,Warsaw
+330,Belgrade
+331,Shanghai Masters
+332,Montpellier
+333,Curitiba
+334,Winston-Salem
+335,Power Horse Cup
+336,Shenzhen
+337,Marrakech
+338,Los Cabos
+339,Us Open
+340,Chengdu
+341,Budapest
+342,Antalya
+343,Beijing 
+344,Pune
+345,Cabo San Lucas
+346,Winston Salem
+347,Guam
+348,Ponte Vedra
+349,Ljubljana
+350,Nyon
+351,Azores
+352,Pescara
+353,Hanko
+354,Tasmania
+355,Lins
+356,Puebla
+357,Aachen
+358,Parioli
+359,Winnetka
+360,Tampere
+361,Neu Ulm
+362,Campos
+363,Sao Paulo6
+364,Heilbronn
+365,Maderia
+366,Salou
+367,Graz
+368,Guadeloupe
+369,Salzburg
+370,Brest
+371,Jerusalem
+372,Nagoya
+373,San Luis Potosi
+374,Sevilla
+375,Siracusa
+376,Fortaleza
+377,Ribeirao
+378,Segovia
+379,Pembroke Pines
+380,Newcastle
+381,Americana
+382,Cervia
+383,Cali
+384,Furth
+385,Cherbourg
+386,Whistler
+387,Sao Paulo5
+388,Salerno
+389,Sao Paulo3
+390,Bossonnens
+391,Messina
+392,Reggio Calabri
+393,Kakegawa
+394,Bloomfield
+395,Sao Paulo7
+396,Gramado
+397,Sao Paulo4
+398,Telford
+399,Turin
+400,Bielefeld
+401,Benin City
+402,Belo Horizonte
+403,Brunei
+404,Napoli
+405,Launceston
+406,Halifax
+407,Itu-Sao Paulo
+408,Sao Luis
+409,Oberstaufen
+410,Ixtapa
+411,Poznan
+412,Recife
+413,Tunis
+414,Agadir
+415,Guangzhou
+416,Yvetot
+417,Liege
+418,Rennes
+419,Cotia
+420,Porto
+421,Natal
+422,Caracas3
+423,Reunion Island
+424,Montebello
+425,Scheveningen
+426,Oostende
+427,Eisenach
+428,Montauban
+429,Campinas
+430,Bergamo
+431,Bruck
+432,Bochum
+433,Kosice
+434,Dresden
+435,Andorra
+436,Rogaska
+437,Riemerling
+438,Garmisch
+439,Tenerife
+440,Punta Del Este
+441,Bronx
+442,Emden
+443,Lippstadt
+444,Wolfsburg
+445,Gothenburg
+446,Ribeirao Preta
+447,Nantes
+448,Prostejov
+449,Weiden
+450,Braunschweig
+451,Annenheim
+452,Binghamton
+453,Guayaquil
+454,Malta
+455,Pilzen
+456,Lima
+457,Seville
+458,Celle
+459,Belem
+460,Puerto Vallarta
+461,Campos Do Jordao
+462,Glendale
+463,Granby
+464,Aruba
+465,Lillehammer
+466,Lexington
+467,Asuncion
+468,Hamburen
+469,Mendoza
+470,Ulm
+471,Goa
+472,Ostend
+473,Medellin
+474,Charleroi
+475,Puerta Vallarta
+476,Fergana
+477,Brasov
+478,Bromma
+479,Portoroz
+480,Alpirsbach
+481,Madras
+482,Olbia
+483,Tanagura
+484,West Bloomfield
+485,Daytona Beach
+486,Mauritius Island
+487,Neumunster
+488,Salinas
+489,Bratislava
+490,Bad Saarow
+491,Skopje
+492,Urbana
+493,Austin
+494,Andijan
+495,Ahmedabad
+496,Szczecin
+497,Alicante
+498,Samarkand
+499,Amarillo
+500,Budva
+501,Santa Cruz
+502,Contrexeville
+503,Barletta
+504,Nettingsdorf
+505,Portschach
+506,Edinburgh
+507,Espinho
+508,Magdeburg
+509,Sedona
+510,Eilat
+511,Rio Grande
+512,Bad Lippspringe
+513,Eckental
+514,Kyoto
+515,Lubeck
+516,Wismar
+517,Burbank
+518,Flushing Meadow
+519,Biella
+520,San Diego
+521,Toluca
+522,Kiev
+523,Tijuana
+524,Vadodara
+525,Pribram
+526,Nuembrecht
+527,Maia
+528,Florianopolis
+529,Manerbio
+530,Aschaffenburg
+531,Freudenstadt
+532,Sylt
+533,Cordoba
+534,Bressanone
+535,Jaipur
+536,Yokohama
+537,Laguna Hills
+538,Lucknow
+539,Grenoble
+540,Lugano
+541,Besancon
+542,Costa Rica
+543,Tallahassee
+544,Sassuolo
+545,Armonk
+546,Togliatti
+547,Monchengladbach
+548,Wroclaw
+549,Hull
+550,Knoxville
+551,Hamilton
+552,Waikoloa
+553,Tangier
+554,Bukhara
+555,Cagliari
+556,Kamnik
+557,Chandigarh
+558,Andrezieux
+559,Tarzana
+560,Kerrville
+561,Budaors
+562,Mantova
+563,Brindisi
+564,Zabrze
+565,Luebeck
+566,Tyler
+567,Rocky Mount
+568,Salvador
+569,Bolton
+570,Calabasas
+571,Ribeirao Preto
+572,San Benedetto
+573,Gosford
+574,Joplin
+575,Leon
+576,Fresno
+577,Trani
+578,Donetsk
+579,Champaign
+580,Waco
+581,North Miami Beach
+582,Zell
+583,Valladolid
+584,Mordovia
+585,Busan
+586,Dnepropetrovsk
+587,Banja Luka
+588,Atlantic City
+589,Groningen
+590,Reggio Emilia
+591,Recanati
+592,Sarajevo
+593,Aix En Provence
+594,Ischgl
+595,New Caledonia
+596,Torrance
+597,Tiburon
+598,St. Jean De Luz
+599,Mandeville
+600,Dharwad
+601,Belgaum
+602,Tumkur
+603,Rimini
+604,Saransk
+605,Timisoara
+606,Cordenons
+607,Manta
+608,Covington
+609,College Station
+610,Homestead
+611,Caloundra
+612,Dubrovnik
+613,Mauritius
+614,Nashville
+615,Canberra
+616,Santa Cruz de la Sierra
+617,Aracaju
+618,Kish Island
+619,St. Brieuc
+620,Lubbock
+621,Orleans
+622,Sunderland
+623,Burnie
+624,Carson
+625,Noumea
+626,Sunrise
+627,La Serena
+628,Monza
+629,Yuba City
+630,Tunica Resorts
+631,Ettlingen
+632,Kolding
+633,Cuenca
+634,Southampton
+635,Mons
+636,Vigo
+637,Pamplona
+638,Rimouski
+639,Kawana
+640,Shrewsbury
+641,Cardiff
+642,Aguascalientes
+643,Chiasso
+644,Lanzarote
+645,Naples
+646,Chikmagalur
+647,Telde
+648,Constanta
+649,Penza
+650,Kranj
+651,Tarragona
+652,Joinville
+653,Como
+654,Kaohsiung
+655,Karlsruhe
+656,Barnstaple
+657,Bytom
+658,Karshi
+659,Rijeka
+660,Alphen Aan Den Rijn
+661,Todi
+662,Cherkassy
+663,Almaty
+664,Trnava
+665,Mas Palomas
+666,Astana
+667,Fes
+668,Rabat
+669,Florianopolis II
+670,New Delhi IV
+671,Medjugorje
+672,Moncton
+673,Ramat Hasharon
+674,Aarhus
+675,San Sebastian
+676,Toyota
+677,Jersey
+678,Cancun
+679,Alessandria
+680,Izmir
+681,Bradenton
+682,Humacao
+683,Baton Rouge
+684,Cremona
+685,New Delhi III
+686,Meknes
+687,East London
+688,Tanger
+689,Rhodes
+690,Pereira
+691,Blumenau
+692,Chuncheon
+693,Charlottesville
+694,Bucaramanga
+695,Orbetello
+696,Bogota3
+697,St. Remy
+698,Savannah
+699,Pozoblanco
+700,Khorat
+701,Khanty-Mansiysk
+702,Iquique
+703,Caltanissetta
+704,Arad
+705,Rome3
+706,Ojai
+707,Marburg
+708,Loughborough
+709,Ortisei
+710,Kazan
+711,Santos
+712,Bath
+713,Ningbo
+714,Le Gosier
+715,Pingguo
+716,Courmayeur
+717,Quimper
+718,Wuhai
+719,Sao Leopoldo
+720,Sao Jose Do Rio Preto
+721,Tyumen
+722,Lermontov
+723,Rio
+724,Sibiu
+725,An-Ning
+726,Wuhan
+727,Bercuit
+728,Petange
+729,Porto Alegre
+730,Mersin
+731,Villa Allende
+732,Panama City
+733,Kun-Ming
+734,Kenitra
+735,Traralgon
+736,Liberec
+737,Eskisehir
+738,Guimaraes
+739,Mouilleron-Le-Captif
+740,Blois
+741,Andria
+742,West Lakes
+743,Yeongwol
+744,Meerbusch
+745,Heilbronn II
+746,Kolkata
+747,Mestre
+748,Tianjin
+749,Cortina
+750,Prague II
+751,Astana II
+752,Irving
+753,Nanchang
+754,Padova
+755,Chitre
+756,Cali II
+757,Gimcheon
+758,Vicenza
+759,Brescia
+760,Indore
+761,Vercelli
+762,Mohammedia
+763,Morelos
+764,Mouilleron Le Captif
+765,Suzhou
+766,Potro Alegre
+767,Happy Valley
+768,St Brieuc
+769,Agri
+770,Batman
+771,Alphen
+772,Cary
+773,Braunchweig
+774,Kobe
+775,Corrientes
+776,Glasgow
+777,Raanana
+778,Drummondville
+779,Hua Hin
+780,Santo Domingo
+781,Ilkley
+782,Slovakia
+783,Perugia
+784,Monte-Carlo
+785,Lahaina
+786,Jonkoping
+787,Zhuhai
+788,Gwangju
+789,Nanjing
+790,Turino
+791,Anning
+792,Poprad
+793,San Benedetto del Tronto
+794,Winnipeg
+795,Fano
+796,Gatineau
+797,Qingdao
+798,Stockton
+799,Nongbo
+800,Bangkok 
+801,Koblenz
+802,Cuernavaca
+803,Tigre
+804,Quanzhou
+805,Saint Brieuc
+806,Sophia Antipolis
+807,Francavilla Al Mare
+808,Rome 
+809,Shymkent
+810,Poprad-Tatry
+811,Floridablanca
+812,Jinan
+813,Zhangjiagang
+814,Tashkent 
+815,Ismaning
+816,Next Gen Finals
+817,Playford
+818,Newport Beach
+819,Lille
+820,Qujing
+821,St.Brieuc
+822,Braga
+823,L'Aquila
+824,Poprad Tatry
+825,Pullach
+826,Cassis
+827,nan
